@@ -9,7 +9,6 @@ plugins {
 	id 'war'
 	id 'org.springframework.boot' version '3.1.7'
 	id 'io.spring.dependency-management' version '1.1.4'
-	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'com.team'
@@ -42,9 +41,12 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	//querydsl 위한 추가 내용  - dependencies 추가
-	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
-	annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
+	//querydsl 위한 추가 내용  - dependencies 추가, 스프링 부트 버전 업에 따라서 javax가 jakarta로 변경
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
 }
 
 tasks.named('bootBuildImage') {
@@ -56,28 +58,10 @@ tasks.named('test') {
 }
 
 // querydsl에서 사용할 경로 설정(현재 지정한 부분은 .gitignore에 포함됨)
-def querydslDir = "$buildDir/generated/querydsl"
-
-// JPA 사용 여부 및 사용할 경로 설정
-querydsl {
-	jpa = true
-	querydslSourcesDir = querydslDir
+def querydslSrcDir = 'src/main/generated'
+clean {
+	delete file(querydslSrcDir)
 }
-
-// build 시 사용할 sourceSet 추가 설정
-sourceSets {
-	main.java.srcDir querydslDir
-}
-
-// querydsl 컴파일 시 사용할 옵션 설정
-compileQuerydsl{
-	options.annotationProcessorPath = configurations.querydsl
-}
-
-// querydsl이 compileClassPath를 상속하도록 설정
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	querydsl.extendsFrom compileClasspath
+tasks.withType(JavaCompile) {
+	options.generatedSourceOutputDirectory = file(querydslSrcDir)
 }
