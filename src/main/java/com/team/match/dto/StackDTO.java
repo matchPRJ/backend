@@ -10,6 +10,6 @@ import java.time.LocalDate;
 public class StackDTO {
     private Long sno;
     private String stackName;
-    private Long suno;
+    private Long sbno;
 
 }

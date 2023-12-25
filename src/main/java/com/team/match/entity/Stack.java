@@ -17,6 +17,6 @@ public class Stack {
     private Long sno;
     private String stackName;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "suno")
-    private User suno;
+    @JoinColumn(name = "sbno")
+    private Board sbno;
 }
