@@ -16,6 +16,7 @@ public class Stack {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sno;
     private String stackName;
+    private boolean sdelete;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sbno")
     private Board sbno;

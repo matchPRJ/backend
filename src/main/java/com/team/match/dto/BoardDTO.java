@@ -20,6 +20,6 @@ public class BoardDTO {
     // bdelete값의 초기값을 true로 설정
     // true = 글이 존재한다, false = 글이 존재하지 않는다.
     @Builder.Default
-    private Boolean bdelete = true;
+    private boolean bdelete = true;
 
 }
