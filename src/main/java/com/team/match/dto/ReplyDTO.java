@@ -20,5 +20,5 @@ public class ReplyDTO {
     // bdelete값의 초기값을 true로 설정
     // true = 글이 존재한다, false = 글이 존재하지 않는다.
     @Builder.Default
-    private Boolean rdelete = true;
+    private boolean rdelete = true;
 }
