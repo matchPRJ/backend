@@ -32,11 +32,16 @@ public class BoardServiceImpl implements BoardService {
     }
 
     // 게시글 목록 처리
-//    @Override
-//    public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO pageRequestDTO) {
-//        log.info(pageRequestDTO);
-//
-//    }
+    @Override
+    public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO pageRequestDTO) {
+        log.info(pageRequestDTO);
+        Function<Object[], BoardDTO> fn = (en -> entityToDTO((Board) en[0], (User) en[1], (Long) en[2]));
+        Page<Object[]> result = boardRepository.searchPage(
+                pageRequestDTO.getBtype(),
+                pageRequestDTO.getPageable(Sort.by("bno").descending()));
+
+        return new PageResultDTO<>(result, fn);
+    }
 
     // 게시글 조회 서비스
     @Override

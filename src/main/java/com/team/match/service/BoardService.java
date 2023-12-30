@@ -12,7 +12,7 @@ public interface BoardService {
     Long register(BoardDTO dto);
 
     // 게시글 목록 처리 (필터링 미완성)
-    // PageResultDTO<BoardDTO, Object[]> getList(PageResultDTO pageResultDTO);
+    PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
 
     // 게시글 조회 처리
     BoardDTO get(Long bno);
