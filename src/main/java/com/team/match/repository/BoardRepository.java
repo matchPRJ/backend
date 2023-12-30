@@ -1,5 +1,6 @@
 package com.team.match.repository;
 
+import com.team.match.repository.search.SearchBoardRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.team.match.entity.Board;
 import org.springframework.data.domain.Page;
@@ -7,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
-public interface BoardRepository extends JpaRepository<Board, Long>{
+public interface BoardRepository extends JpaRepository<Board, Long>, SearchBoardRepository {
 
     // 특정 게시글에 대한 정보와 해당 게시글을 작성한 사용자 정보를 함께 조회
     @Query("select b, u from Board b left join b.buno u  where b.bno =:bno")
@@ -37,4 +38,6 @@ public interface BoardRepository extends JpaRepository<Board, Long>{
             "left outer join Reply r on r.rbno = b " +
             "where b.bno = :bno and (r is null or r.rdelete <> false) group by b, u")
     Object getBoardByBno(@Param("bno") Long bno);
+
+
 }

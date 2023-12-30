@@ -16,7 +16,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uno;
+
+    // 카카오톡 username
     private String username;
+
+    // 팀워크 웹에서 사용할 닉네임
     private String nickname;
     private String roles;
     private String email;
