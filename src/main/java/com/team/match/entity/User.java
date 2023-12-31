@@ -16,25 +16,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uno;
-
-    // 카카오톡 username
-    private String username;
-
-    // 팀워크 웹에서 사용할 닉네임
-    private String nickname;
-    private String roles;
-    private String email;
+    private String id;
     private String password;
-    private String providerId;
-    private String provider;
-    @CreationTimestamp
-    private Timestamp createDate;
-
-    // ENUM으로 안하고 ,로 해서 구분해서 ROLE을 입력 -> 그걸 파싱!!
-    public List<String> getRoleList() {
-        if(this.roles.length() > 0) {
-            return Arrays.asList(this.roles.split(","));
-        }
-        return new ArrayList<>();
-    }
+    private String sex;
+    private Integer age;
+    private String name;
+    private String nickname;
 }
