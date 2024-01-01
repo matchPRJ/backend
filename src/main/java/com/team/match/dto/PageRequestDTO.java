@@ -10,7 +10,18 @@ public class PageRequestDTO {
 
     private int page;
     private int size;
+    // 게시판 검색
     private String btype;
+
+    // 중고차 가격 비교 검색
+    private String nType; // 이름
+    private String tType; // 태그
+    private String bType; // 브랜드
+    private String oilType; // 연료
+    private String pType;     // 가격 범위
+    private String kType;     // km 범위
+    private String yType;     // 연식 범위
+
     public PageRequestDTO() {
         this.page = 1;
         this.size = 10;
