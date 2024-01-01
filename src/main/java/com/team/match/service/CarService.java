@@ -6,6 +6,8 @@ import com.team.match.entity.Car;
 import com.team.match.dto.CarDTO;
 public interface CarService {
 
+    PageResultDTO<CarDTO, Car> getList(PageRequestDTO requestDTO);
+
     default Car dtoToEntity(CarDTO dto) {
         Car car = Car.builder()
                 .cno(dto.getCno())
