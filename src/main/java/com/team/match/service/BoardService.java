@@ -30,6 +30,7 @@ public interface BoardService {
                 .bno(dto.getBno())
                 .btitle(dto.getBtitle())
                 .bcontent(dto.getBcontent())
+                .link(dto.getLink())
                 .bdelete(dto.isBdelete())
                 .buno(user)
                 .build();
@@ -44,6 +45,7 @@ public interface BoardService {
                 .bnickname(user.getNickname())
                 .btitle(board.getBtitle())
                 .bcontent(board.getBcontent())
+                .link(board.getLink())
                 .bdelete(board.isBdelete())
                 .regDate(board.getRegDate())
                 .modDate(board.getModDate())

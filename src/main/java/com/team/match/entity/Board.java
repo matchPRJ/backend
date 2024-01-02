@@ -17,6 +17,7 @@ public class Board extends BaseEntity {
     private String btitle;
     private String bcontent;
     private boolean bdelete;
+    private String link;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "buno")
     private User buno;
