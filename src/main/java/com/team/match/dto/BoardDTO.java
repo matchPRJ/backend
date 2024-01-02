@@ -13,6 +13,7 @@ public class BoardDTO {
     private String bnickname;
     private String btitle;
     private String bcontent;
+    private String link;
     private LocalDate regDate;
     private LocalDate modDate;
     private int replyCount;
