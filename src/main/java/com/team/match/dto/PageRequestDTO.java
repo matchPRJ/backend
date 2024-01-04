@@ -31,10 +31,4 @@ public class PageRequestDTO {
         return PageRequest.of(page -1, size, sort);
     }
 
-    public Pageable getCarPageable() {
-        // 정렬 조건을 추가
-        Sort sort = Sort.by("cno").descending();
-        return PageRequest.of(page - 1, size, sort);
-    }
-
 }
