@@ -29,9 +29,9 @@ public class CarServiceImpl implements CarService{
 
         String nType = requestDTO.getNType();
         String tType = requestDTO.getTType();
+        String typeType = requestDTO.getTypeType();
         String brandType = requestDTO.getBrandType();
         String oilType = requestDTO.getOilType();
-        String pType = requestDTO.getPType();
         String kType = requestDTO.getKType();
         String yType = requestDTO.getYType();
 
@@ -46,31 +46,14 @@ public class CarServiceImpl implements CarService{
         if(tType != null) {
             conditionBuilder.and(qCar.tag.contains(tType));
         }
+        if(typeType != null) {
+            conditionBuilder.and(qCar.type.contains(typeType));
+        }
         if(brandType != null) {
             conditionBuilder.and(qCar.brand.contains(brandType));
         }
         if(oilType != null) {
             conditionBuilder.and(qCar.oil.contains(oilType));
-        }
-
-        // Ex. pType: 최소, 20만원
-        if(pType != null) {
-            String[] price = pType.split(",");
-            if("최소".equals(price[0])) {
-                int keyword1_1=0;
-                int keyword2_1 = Integer.parseInt(price[1].replace("만원", "0000"));
-                conditionBuilder.and(qCar.pricer.between(keyword1_1, keyword2_1));
-            }
-            else if ("최대".equals(price[1])) {
-                int keyword1_1 = Integer.parseInt(price[0].replace("만원", "0000"));
-                int keyword2_1 = 100000000;
-                conditionBuilder.and(qCar.pricer.between(keyword1_1, keyword2_1));
-            }
-            else {
-                int keyword1_1 = Integer.parseInt(price[0].replace("만원", "0000"));
-                int keyword2_1 = Integer.parseInt(price[1].replace("만원", "0000"));
-                conditionBuilder.and(qCar.pricer.between(keyword1_1, keyword2_1));
-            }
         }
 
         if(kType != null) {
