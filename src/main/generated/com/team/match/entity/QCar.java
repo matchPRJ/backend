@@ -23,6 +23,8 @@ public class QCar extends EntityPathBase<Car> {
 
     public final NumberPath<Long> cno = createNumber("cno", Long.class);
 
+    public final StringPath img = createString("img");
+
     public final StringPath km = createString("km");
 
     public final NumberPath<Integer> kmr = createNumber("kmr", Integer.class);

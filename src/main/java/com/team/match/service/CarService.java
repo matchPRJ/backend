@@ -21,6 +21,7 @@ public interface CarService {
                 .year(dto.getYear())
                 .km(dto.getKm())
                 .kmr(dto.getKmr())
+                .img(dto.getImg())
                 .build();
         return car;
     }
@@ -38,6 +39,7 @@ public interface CarService {
                 .year(car.getYear())
                 .km(car.getKm())
                 .kmr(car.getKmr())
+                .img(car.getImg())
                 .build();
         return carDTO;
     }
