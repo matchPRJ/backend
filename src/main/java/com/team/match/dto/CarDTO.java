@@ -18,4 +18,5 @@ public class CarDTO {
     private String km;
     private Integer kmr;
     private String oil;
+    private String img;
 }

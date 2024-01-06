@@ -25,4 +25,5 @@ public class Car {
     private String km;          // 주행거리
     private Integer kmr;        // 검색 기능 중 주행거리에 해당
     private String oil;     // 연료 타입
+    private String img;     // 이미지 링크
 }
