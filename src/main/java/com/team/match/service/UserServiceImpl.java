@@ -16,6 +16,10 @@ public class UserServiceImpl implements UserService{
     //로그인
     @Override
     public UserDTO login(UserDTO user){
-        return toUserDTO(userRepository.findByIdAndPassword(user.getId(), user.getPassword()));
+        if(userRepository.findByIdAndPassword(user.getId(), user.getPassword()) != null) {
+            return toUserDTO(userRepository.findByIdAndPassword(user.getId(), user.getPassword()));
+        }else{
+            return new UserDTO();
+        }
     }
 }
