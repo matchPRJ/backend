@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Log4j2
 public class UserServiceImpl implements UserService{
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     //로그인
     @Override
